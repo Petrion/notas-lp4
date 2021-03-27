@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import ListaNotas from "./components/ListaNotas";
+import FormNota from "./components/FormNota";
+import "./App.css";
+import { useState } from "react";
 
 function App() {
+
+  
+  /*  const[minhasNotas,setMinhasNotas]= useState([]) esta 
+  criando uma variavel chamada minhasNotas que começa com um array vazio - usestate([])
+  e esta criando uma funcao setMinhaNotas que vai alterar o conteudo dessa minhaNotas   
+  */
+  const[minhasNotas,setMinhasNotas]= useState([])
+    
+    function adicionarNota(novaNota){
+    /** ...minhasNotas                os 3 pontinhos significa todos os elementos de... minhasNotas
+     * const novoArray = [...minhasNotas,novaNota]         esta criando um novoarray cujo os elementos são
+     * todos os elementos de minhasNotas + novanota que foi passado para a funcao adicionarNota*/  
+    const novoArray = [...minhasNotas,novaNota]
+
+    setMinhasNotas(novoArray)
+    console.log(minhasNotas)
+      
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="container">
+      <section className="left">
+        <FormNota aoAdicionarNota = {adicionarNota} />
+      </section>
+
+      <section className="right">
+        <ListaNotas notas = {minhasNotas} /> 
+      </section>
+    </section>
   );
 }
 

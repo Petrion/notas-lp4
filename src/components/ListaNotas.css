@@ -1,0 +1,7 @@
+.lista-notas {
+  list-style: none;
+}
+
+.lista-notas li {
+  display: inline-block;
+}
